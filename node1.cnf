@@ -33,8 +33,8 @@ wsrep_on=ON
 wsrep_provider=/usr/lib/galera/libgalera_smm.so
 
 # Galera Cluster Configuration
-wsrep_cluster_name="hw3_cluster"
-wsrep_cluster_address="gcomm://192.168.0.101,192.168.0.102,192.168.0.103"
+wsrep_cluster_name="hw7_cluster"
+wsrep_cluster_address="gcomm://192.168.0.101,192.168.0.102"
 
 # Galera Synchronization Configuration
 wsrep_sst_method=rsync
