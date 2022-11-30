@@ -28,6 +28,6 @@ COPY replica.lua /etc/tarantool/instances.available/replica.lua
 WORKDIR /etc/tarantool
 RUN mkdir instances.enabled
 RUN ln -s /instances.available/replica.lua instances.enabled
-RUN tarantoolctl start replica.lua
-RUN systemctl start replicatord
+RUN systemctl enable tarantool@replica
+RUN systemctl enable replicatord
 CMD ["/usr/sbin/init"]

@@ -11,7 +11,7 @@
 `GRANT ALL ON *.* to flask@'192.168.0.1' IDENTIFIED BY 'ksalf';`
 `FLUSH PRIVILEGES;`
 `CREATE DATABASE social_network;`
-4) Запускаем tarantool: `docker run --privileged -i -d --name Tarantool --hostname tarantool --network="hw7" --ip=192.168.0.103 -p 3303:3301 centos:tarantool`.
+4) Запускаем tarantool: `docker run -i -d --privileged=true --name Tarantool --hostname tarantool --network="hw7" --ip=192.168.0.103 -p 3303:3301 centos:tarantool`.
 5) Выполнить в текущей директории CLI команду `pip install -r requirements.txt` для установки зависимостей приложения.
 6) Выполнить в текущей директории CLI команду `py -3 -m flask --app app run` для локального запуска приложения (порт 5000).
 
