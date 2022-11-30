@@ -1,5 +1,6 @@
 from flask import Flask, request
 from pymysql import connect
+from tarantool import Connection
 from faker import Faker
 
 
@@ -19,7 +20,23 @@ def mysql2():
                     password='ksalf',
                     db='social_network')
 
+def cache():
+    return Connection("127.0.0.1", 3303)
+
 fake = Faker()
+
+
+@app.route("/cached-profiles", methods = ['GET'])
+def cachedProfiles():
+    if request.method == 'GET':
+        conn = cache()
+        profiles = conn.select('replica')
+        return [{ 
+            "id": profile[0],
+            "firstName": profile[1], 
+            "secondName": profile[2],
+            "interests": profile[3],
+            "city": profile[4] } for profile in profiles], 200
 
 
 @app.route("/profiles", methods = ['GET', 'POST'])
