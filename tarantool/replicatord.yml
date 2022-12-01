@@ -1,8 +1,8 @@
 mysql:
     host: 192.168.0.101
     port: 3306
-    user: root
-    password: toor
+    user: flask
+    password: ksalf
     connect_retry: 15 # seconds
 
 tarantool:

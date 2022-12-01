@@ -11,6 +11,10 @@ binlog_format=ROW
 default-storage-engine=innodb
 innodb_autoinc_lock_mode=2
 
+interactive_timeout = 3600
+wait_timeout = 3600
+max_allowed_packet = 32M
+
 # semi-sync options
 loose-rpl_semi_sync_slave_enabled=1
 loose-rpl_semi_sync_master_timeout=3600000
@@ -42,3 +46,6 @@ wsrep_sst_method=rsync
 # Galera Node Configuration
 wsrep_node_address="192.168.0.102"
 wsrep_node_name="node2"
+
+[client]
+socket = /var/run/mysqld/mysqld.sock

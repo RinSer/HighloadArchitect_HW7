@@ -6,10 +6,11 @@
 2.3) Выполнить в текущей директории CLI команду `docker build -t centos:tarantool ./tarantool` для создания образа ноды с tarantool.
 3.1) Создаем сеть в докере: `docker network create --subnet=192.168.0.0/24 hw7`.
 3.2) Запуск первой ноды кластера: `docker run -i -d --name Node1 --hostname node1 --network="hw7" --ip=192.168.0.101 -p 3301:3306 -v /var/container_data/mysql:/var/lib/mysql ubuntu:galera-node1`.
-3.3) Добавляем пользователя приложения и БД:
+3.3) Запуск первой ноды кластера: `docker run -i -d --name Node2 --hostname node2 --network="hw7" --ip=192.168.0.102 -p 3302:3306 -v /var/container_data/mysql:/var/lib/mysql ubuntu:galera-node2`.
+3.4) Добавляем пользователя приложения и БД:
 `mysql -u root -p`
-`SET PASSWORD FOR 'root'@'localhost' = PASSWORD('mypass');`
-`GRANT ALL ON *.* to flask@'192.168.0.1' IDENTIFIED BY 'ksalf';`
+`CREATE USER 'flask'@'%' IDENTIFIED BY 'ksalf';`
+`GRANT ALL ON *.* to 'flask'@'%' IDENTIFIED BY 'ksalf';`
 `FLUSH PRIVILEGES;`
 `CREATE DATABASE social_network;`
 4) Запускаем tarantool: `docker run -i -d --privileged=true --name Tarantool --hostname tarantool --network="hw7" --ip=192.168.0.103 -p 3303:3301 centos:tarantool`.
