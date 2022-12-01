@@ -42,4 +42,10 @@ local function bootstrap()
 
 end
 
+-- stored procedure to load 
+-- all the cached profiles
+function get_profiles()
+    return box.space.mysqldata:select()
+end
+
 bootstrap()

@@ -30,7 +30,8 @@ fake = Faker()
 def cachedProfiles():
     if request.method == 'GET':
         conn = cache()
-        profiles = conn.select('replica')
+        response = conn.call('get_profiles')
+        profiles = response.data[0]
         return [{ 
             "id": profile[0],
             "firstName": profile[1], 
