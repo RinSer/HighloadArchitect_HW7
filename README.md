@@ -8,6 +8,7 @@
 3.2) Запуск первой ноды кластера: `docker run -i -d --name Node1 --hostname node1 --network="hw7" --ip=192.168.0.101 -p 3301:3306 -v /var/container_data/mysql:/var/lib/mysql ubuntu:galera-node1`.
 3.3) Добавляем пользователя приложения и БД:
 `mysql -u root -p`
+`SET PASSWORD FOR 'root'@'localhost' = PASSWORD('mypass');`
 `GRANT ALL ON *.* to flask@'192.168.0.1' IDENTIFIED BY 'ksalf';`
 `FLUSH PRIVILEGES;`
 `CREATE DATABASE social_network;`
